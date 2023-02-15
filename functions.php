@@ -82,4 +82,22 @@ global $conn;
 
     return mysqli_affected_rows($conn);
 }
+
+
+function search($keyword) {
+    global $conn;
+
+    $query = "SELECT * FROM member WHERE
+                foto LIKE '%$keyword%' OR 
+                nama_panggung LIKE '%$keyword%' OR
+                nama_lahir LIKE '%$keyword%' OR
+                posisi LIKE '%$keyword%' OR
+                tanggal_lahir LIKE '%$keyword%' OR
+                tinggi_badan LIKE '%$keyword%' OR
+                kekuatan_super LIKE '%$keyword%' OR
+                sub_unit LIKE '%$keyword%' 
+            ";
+    
+    return query($query);
+}
 ?>

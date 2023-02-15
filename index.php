@@ -2,7 +2,13 @@
 
 // menghubungkan 2 file
 require 'functions.php';
-$member = query("SELECT * FROM member");
+$member = query("SELECT * FROM member ");
+
+//ketika user mau search
+if (isset($_POST['search'])) {
+    $member = search($_POST['keyword']);
+}
+
 
 ?>
 
@@ -37,7 +43,14 @@ $member = query("SELECT * FROM member");
 
 <body>
     <h1>Daftar Member EXO</h1>
-    <a href="insert.php">Tambah Data Mahasiswa</a>
+    <a href="insert.php">Tambah Data Mahasiswa</a><br><br>
+
+    <form action="" method="POST">
+        <input type="text" name="keyword" size="70" autofocus placeholder="masukkan keyword pencarian"
+            autocomplete="off">
+        <button tipe="submit" name="search">Search</button>
+    </form>
+
     <br><br>
     <table>
         <thead>
